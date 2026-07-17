@@ -1,0 +1,29 @@
+# IntelliJ / JetBrains
+.idea/
+*.iml
+shelf/
+.idea/workspace.xml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+
+# OS junk
+.DS_Store
+
+# Logs
+*.log
+
+# Project data (don’t commit runtime stuff)
+recordings/
+data/
+models/
+
+# pytest / coverage (if you use later)
+.pytest_cache/
+.coverage
