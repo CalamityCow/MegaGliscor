@@ -1,0 +1,3 @@
+[submodule "src/poke-engine-fork"]
+	path = src/poke-engine-fork
+	url = https://github.com/pmariglia/poke-engine
