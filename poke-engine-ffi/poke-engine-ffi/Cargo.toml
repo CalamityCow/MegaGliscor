@@ -1,0 +1,19 @@
+[package]
+name = "poke-engine-ffi"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "poke_engine_ffi"
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+# Pick ONE generation feature - see poke-engine's own Cargo.toml for the full
+# list (gen1..gen9, plus "terastallization" on top of gen9). gen9 is the
+# reasonable default for singles right now.
+poke-engine = { version = "0.0.47", features = ["gen9"] }
+uniffi = "0.32"
+
+# If you'd rather track poke-engine's main branch instead of the crates.io
+# release, swap the line above for:
+# poke-engine = { git = "https://github.com/pmariglia/poke-engine", features = ["gen9"] }
