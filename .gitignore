@@ -1,29 +1,56 @@
 # IntelliJ / JetBrains
+
 .idea/
 *.iml
 shelf/
 .idea/workspace.xml
 
 # Python
+
 __pycache__/
 *.pyc
 *.pyo
 
 # Virtual environment
+
 .venv/
 venv/
 
 # OS junk
+
 .DS_Store
 
 # Logs
+
 *.log
 
 # Project data (don’t commit runtime stuff)
+
 recordings/
 data/
 models/
 
 # pytest / coverage (if you use later)
+
 .pytest_cache/
 .coverage
+
+
+# Rust
+
+# Build output
+target/
+
+# Rust backup files
+**/*.rs.bk
+
+# Cargo generated files
+Cargo.lock
+
+# Native libraries
+*.dylib
+*.so
+*.dll
+
+# UniFFI generated bindings (optional)
+# bindings-out/
