@@ -52,5 +52,5 @@ Cargo.lock
 *.so
 *.dll
 
-# UniFFI generated bindings (optional)
-# bindings-out/
+# Secerts
+*.env

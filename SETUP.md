@@ -233,10 +233,3 @@ Worth saving that as `scripts/rebuild-ffi.sh` — you'll run it every time you
 touch the Rust side.
 
 ---
-
-## Next up
-
-Once this scaffolding builds clean, the actual work starts: writing the
-`#[uniffi::export]` functions against `poke-engine`'s `State` type, and then
-the much bigger task — the Kotlin-side Showdown protocol parser that
-serializes tracked battle state into poke-engine's state-string format.

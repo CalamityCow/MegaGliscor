@@ -11,7 +11,7 @@ crate-type = ["cdylib", "lib"]
 # Pick ONE generation feature - see poke-engine's own Cargo.toml for the full
 # list (gen1..gen9, plus "terastallization" on top of gen9). gen9 is the
 # reasonable default for singles right now.
-poke-engine = { version = "0.0.47", features = ["gen9"] }
+poke-engine = { version = "0.0.47", features = ["terastallization"] }
 uniffi = "0.32"
 
 # If you'd rather track poke-engine's main branch instead of the crates.io
