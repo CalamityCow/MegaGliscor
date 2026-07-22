@@ -1,9 +1,3 @@
-import LoggerConfigs.websocketLogger
-import WebsocketClient.connect
-import WebsocketClient.httpPost
-import WebsocketClient.sendMessage
-import WebsocketClient.setAddress
-import co.touchlab.kermit.Logger
 import io.ktor.http.Parameters
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.boolean
@@ -18,12 +12,12 @@ object PSInterface {
      * @param player The bot player to log in.
      */
     suspend fun connectAndLogin(player: BotPlayer) {
-        setAddress(player.address)
-        connect()
+        WebsocketClient.setAddress(player.address)
+        WebsocketClient.connect()
         val challstr = returnChallstr()
         val assertion = getAssertion(player, challstr)
-        sendMessage("|/trn ${player.user},0,$assertion")
-        websocketLogger.i {"Successfully logged in as ${player.user}"}
+        WebsocketClient.sendMessage("|/trn ${player.user},0,$assertion")
+        LoggerConfigs.websocketLogger.i {"Successfully logged in as ${player.user}"}
     }
 
     /**
@@ -50,7 +44,7 @@ object PSInterface {
      * @return The assertion string.
      */
     suspend fun getAssertion(player: BotPlayer, challstr: String): String {
-        val response = httpPost(
+        val response = WebsocketClient.httpPost(
             Parameters.build {
                 append("name", player.user)
                 append("pass", player.password)
@@ -82,8 +76,34 @@ object PSInterface {
      * @param player The bot player
      */
     suspend fun setAvatar(player: BotPlayer) {
-        sendMessage("|/avatar ${player.avatar}")
+        WebsocketClient.sendMessage("|/avatar ${player.avatar}")
     }
 
-    
+    /**
+     * Searches for a battle in a given format.
+     *
+     * @param format The battle format e.g. gen9ou, ranbats
+     */
+    suspend fun searchBattle(format: String) {
+        WebsocketClient.sendMessage("|/search $format")
+    }
+
+    /**
+     * Sends a challenge to a user in a specific format.
+     *
+     * @param username The username of the user to challenge.
+     * @param format The battle format e.g. gen9ou, ranbats
+     */
+    suspend fun sendChallenge(username: String, format: String) {
+        WebsocketClient.sendMessage("|/challenge $username, $format")
+    }
+
+    /**
+     * Accepts incoming challenge from a player
+     *
+     * @param username The username of the challenger
+     */
+    suspend fun acceptChallenge(username: String) {
+        WebsocketClient.sendMessage("|/accept $username")
+    }
 }
